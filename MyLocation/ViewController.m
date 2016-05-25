@@ -16,12 +16,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    
+    _locationManager.delegate = self;
+    
+    // Необходима как можно большая точность независимо
+    // от того, сколько это займет времени или потребует энергии
+    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    
+    // Сообщить диспетчеру о немедленном начале поиска локации
+    [_locationManager startUpdatingLocation];
+    [_locationManager requestWhenInUseAuthorization];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {
+    
+    NSLog(@"%@", newLocation);
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error {
+    
+    NSLog(@"Не удается определить текущее положение: %@", error);
+    
 }
 
 @end
