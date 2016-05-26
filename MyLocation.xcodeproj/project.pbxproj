@@ -14,6 +14,7 @@
 		AB30E77D1CF5B13D00C985B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB30E77C1CF5B13D00C985B2 /* Assets.xcassets */; };
 		AB30E7801CF5B13D00C985B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB30E77E1CF5B13D00C985B2 /* LaunchScreen.storyboard */; };
 		AB30E7881CF5B25200C985B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB30E7871CF5B25200C985B2 /* CoreLocation.framework */; };
+		AB30E78A1CF5EAD400C985B2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB30E7891CF5EAD400C985B2 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AB30E77F1CF5B13D00C985B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB30E7811CF5B13D00C985B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB30E7871CF5B25200C985B2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AB30E7891CF5EAD400C985B2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB30E78A1CF5EAD400C985B2 /* MapKit.framework in Frameworks */,
 				AB30E7881CF5B25200C985B2 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +48,7 @@
 		AB30E7641CF5B13D00C985B2 = {
 			isa = PBXGroup;
 			children = (
+				AB30E7891CF5EAD400C985B2 /* MapKit.framework */,
 				AB30E7871CF5B25200C985B2 /* CoreLocation.framework */,
 				AB30E76F1CF5B13D00C985B2 /* MyLocation */,
 				AB30E76E1CF5B13D00C985B2 /* Products */,

@@ -10,12 +10,19 @@
 
 @interface ViewController ()
 
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UITextField *locationTextField;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _mapView.showsUserLocation = true;
+    _mapView.delegate = self;
     
     _locationManager = [[CLLocationManager alloc] init];
     
@@ -26,14 +33,23 @@
     [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     
     // Сообщить диспетчеру о немедленном начале поиска локации
-    [_locationManager startUpdatingLocation];
+    //[_locationManager startUpdatingLocation];
     [_locationManager requestWhenInUseAuthorization];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - MKMapViewDelegate
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    
+    CLLocationCoordinate2D location = userLocation.coordinate;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location, 250, 250);
+    [mapView setRegion:region animated:true];
+    
 }
 
 #pragma mark - CLLocationManagerDelegate
