@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UITextField *locationTextField;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 
 @end
 
@@ -39,6 +40,15 @@
     // Сообщить диспетчеру о немедленном начале поиска локации
     //[_locationManager startUpdatingLocation];
     [_locationManager requestWhenInUseAuthorization];
+    
+    [_mapTypeSegmentedControl addTarget:self
+                         action:@selector(mapTypeChanged:)
+               forControlEvents:UIControlEventValueChanged];
+}
+
+
+- (void)mapTypeChanged:(UISegmentedControl *)control {
+    [_mapView setMapType:control.selectedSegmentIndex];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +65,15 @@
 - (void)foundLocation:(CLLocation *)location {
     CLLocationCoordinate2D coord = location.coordinate;
     
-    ABMapPoint *mapPoint = [[ABMapPoint alloc] initWithCoordinate:coord andTitle:[_locationTextField text]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    dateFormatter.timeStyle = NSDateFormatterNoStyle;
+    
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+    NSString *dateStr = [@" " stringByAppendingString:[dateFormatter stringFromDate:[NSDate date]]];
+    NSString *title = [[_locationTextField text] stringByAppendingString:dateStr];
+    
+    ABMapPoint *mapPoint = [[ABMapPoint alloc] initWithCoordinate:coord andTitle: title];
     [_mapView addAnnotation:mapPoint];
     
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coord, 250, 250);

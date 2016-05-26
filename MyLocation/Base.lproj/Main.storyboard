@@ -28,6 +28,14 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="CCB-Ix-G6W">
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                             </activityIndicatorView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RiQ-1f-ibt">
+                                <rect key="frame" x="20" y="497" width="280" height="29"/>
+                                <segments>
+                                    <segment title="Схема"/>
+                                    <segment title="Спутник"/>
+                                    <segment title="Гибрид"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -46,6 +54,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="CCB-Ix-G6W" id="hpp-Fo-bJy"/>
                         <outlet property="locationTextField" destination="9Dq-4U-kwZ" id="7QA-0x-Jz1"/>
+                        <outlet property="mapTypeSegmentedControl" destination="RiQ-1f-ibt" id="4Km-EK-jOa"/>
                         <outlet property="mapView" destination="Ye1-Mi-1dz" id="KCS-9U-XUc"/>
                     </connections>
                 </viewController>
