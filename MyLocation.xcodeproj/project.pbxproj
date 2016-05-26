@@ -15,6 +15,7 @@
 		AB30E7801CF5B13D00C985B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB30E77E1CF5B13D00C985B2 /* LaunchScreen.storyboard */; };
 		AB30E7881CF5B25200C985B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB30E7871CF5B25200C985B2 /* CoreLocation.framework */; };
 		AB30E78A1CF5EAD400C985B2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB30E7891CF5EAD400C985B2 /* MapKit.framework */; };
+		AB30E78D1CF71D9E00C985B2 /* ABMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30E78C1CF71D9E00C985B2 /* ABMapPoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		AB30E7811CF5B13D00C985B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB30E7871CF5B25200C985B2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AB30E7891CF5EAD400C985B2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AB30E78B1CF71D9E00C985B2 /* ABMapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMapPoint.h; sourceTree = "<group>"; };
+		AB30E78C1CF71D9E00C985B2 /* ABMapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABMapPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 				AB30E7741CF5B13D00C985B2 /* AppDelegate.m */,
 				AB30E7761CF5B13D00C985B2 /* ViewController.h */,
 				AB30E7771CF5B13D00C985B2 /* ViewController.m */,
+				AB30E78B1CF71D9E00C985B2 /* ABMapPoint.h */,
+				AB30E78C1CF71D9E00C985B2 /* ABMapPoint.m */,
 				AB30E7791CF5B13D00C985B2 /* Main.storyboard */,
 				AB30E77C1CF5B13D00C985B2 /* Assets.xcassets */,
 				AB30E77E1CF5B13D00C985B2 /* LaunchScreen.storyboard */,
@@ -159,6 +164,7 @@
 			files = (
 				AB30E7781CF5B13D00C985B2 /* ViewController.m in Sources */,
 				AB30E7751CF5B13D00C985B2 /* AppDelegate.m in Sources */,
+				AB30E78D1CF71D9E00C985B2 /* ABMapPoint.m in Sources */,
 				AB30E7721CF5B13D00C985B2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
