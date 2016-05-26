@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ABMapPoint.h"
 
 
 @interface ViewController ()
@@ -21,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _locationTextField.delegate = self;
     
     _mapView.showsUserLocation = true;
     _mapView.delegate = self;
@@ -43,6 +46,37 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)findLocation {
+    [_locationManager startUpdatingLocation];
+    [_activityIndicator startAnimating];
+    [_locationTextField setHidden:true];
+}
+
+- (void)foundLocation:(CLLocation *)location {
+    CLLocationCoordinate2D coord = location.coordinate;
+    
+    ABMapPoint *mapPoint = [[ABMapPoint alloc] initWithCoordinate:coord andTitle:[_locationTextField text]];
+    [_mapView addAnnotation:mapPoint];
+    
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coord, 250, 250);
+    [_mapView setRegion:region animated:true];
+    
+    [_locationTextField setText:@""];
+    [_activityIndicator stopAnimating];
+    [_locationTextField setHidden:false];
+    [_locationManager stopUpdatingLocation];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [self findLocation];
+    [textField resignFirstResponder]; // отказ назначения первого респондера для textField => скрытие клавиатуры
+    
+    return true;
+}
+
 #pragma mark - MKMapViewDelegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
@@ -60,6 +94,15 @@
            fromLocation:(CLLocation *)oldLocation {
     
     NSLog(@"%@", newLocation);
+    
+    // Сколько секунд прошло после создания новой локации?
+    NSTimeInterval time = [[newLocation timestamp] timeIntervalSinceNow];
+    
+    if (time < -180) {
+        return;
+    }
+    
+    [self foundLocation:newLocation];
     
 }
 

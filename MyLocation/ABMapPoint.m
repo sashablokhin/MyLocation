@@ -10,12 +10,14 @@
 
 @implementation ABMapPoint
 
-- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate andTitle:(NSString *)title {
+@synthesize coordinate, title;
+
+- (id)initWithCoordinate:(CLLocationCoordinate2D)c andTitle:(NSString *)t {
     self = [super init];
     
     if (self) {
-        self.coordinate = coordinate;
-        self.title = title;
+        coordinate = c;
+        [self setTitle:t];
     }
     
     return self;
